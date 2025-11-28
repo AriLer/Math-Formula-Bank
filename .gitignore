@@ -1,0 +1,100 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+build/
+.next-server/
+.next/static/chunks/pages/
+.next/cache/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel / Deployment
+.vercel
+.vercel_build_output/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# Dependency directories (if using other package managers)
+/.vscode/
+/.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.sublime-workspace
+*.sublime-project
+
+# TypeScript (even if you're using JS, Next.js generates these)
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Tailwind / PostCSS
+/.cache
+/public/sw.js
+/public/sw.js.map
+/public/workbox-*.js
+/public/workbox-*.js.map
+
+# Optional: if you use Playwright or Cypress
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Optional: if you use Storybook
+.storybook/
+
+# Misc
+*.bak
+*.gho
+*.ori
+*.tmp
+*.temp
+
+# Production build (if you ever run next build locally and commit by mistake)
+/dist

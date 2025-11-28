@@ -1,0 +1,145 @@
+@import 'tailwindcss';
+@plugin "tailwindcss-animate";
+
+@theme {
+  --text-3xl: 1.75rem;
+
+  --color-background: #151e2e;
+  --color-foreground: #ffffff;
+
+  --color-background-secondary: #418eaf0f;
+
+  --color-primary: #155dfb;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #364153;
+  --color-secondary-foreground: #ffffff;
+
+  --color-accent: #364153;
+  --color-accent-foreground: #ffffff;
+
+  --color-destructive: #e7000b;
+  --color-destructive-foreground: #ffffff;
+
+  --color-success: #1ba639;
+  --color-success-foreground: #ffffff;
+
+  --color-disabled: #f1f5f7;
+  --color-disabled-foreground: #0000004d;
+
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #9c9c9c;
+
+  --color-success-muted: #101828;
+  --color-success-muted-foreground: #1e9538;
+
+  --color-border: #9c9c9c27;
+  --color-input: #9c9c9c40;
+  --color-ring: #5ba4c2;
+
+  --color-card: #1e2939;
+  --color-card-foreground: #000000;
+  --breakpoint-l: 70rem;
+
+  --shadow-header: 0px 4px 21px #00000008;
+}
+
+* {
+  /* color: #9c9c9c97; */
+}
+
+@layer base {
+  a,
+  img,
+  .lucide {
+    @apply select-none;
+  }
+
+  img,
+  .lucide {
+    @apply shrink-0;
+  }
+
+  .scroll-none::-webkit-scrollbar {
+    display: none;
+  }
+  .overflow-y-none::-webkit-scrollbar:vertical {
+    display: none;
+  }
+  .overflow-x-none::-webkit-scrollbar:horizontal {
+    display: none;
+  }
+  .overflow-anchor-none {
+    overflow-anchor: none;
+  }
+
+  /* Remove input type NUMBER arrows */
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: none;
+  }
+}
+
+@layer utilities {
+  .focusable {
+    @apply outline-none focus-visible:ring-1 ring-ring ring-offset-transparent ring-offset-1;
+  }
+}
+
+@layer components {
+  .toast {
+    /* @apply !font-assistant; */
+  }
+
+  .toast-title {
+    @apply text-lg !leading-tight font-semibold;
+  }
+
+  .toast-description {
+    @apply text-base !leading-tight;
+  }
+
+  .button-gradient {
+    background: linear-gradient(180deg, #3c738a 22%, #0c5a7b 100%);
+  }
+
+  .page-gradient {
+    background: linear-gradient(to right bottom, #111b2e 0%, #232f42 100%);
+    background-repeat: no-repeat;
+  }
+
+  .loader {
+    height: 4px;
+    width: 130px;
+    --c: no-repeat linear-gradient(#3c738a 0 0);
+    background: var(--c), var(--c), #e6f0fa; /* #e6f0fa is your accent background */
+    background-size: 60% 100%;
+    animation: progress 4s infinite;
+    position: relative;
+    opacity: 1;
+  }
+  @keyframes progress {
+    0% {
+      background-position: -150% 0, -150% 0;
+    }
+    66% {
+      background-position: 250% 0, -150% 0;
+    }
+    100% {
+      background-position: 250% 0, 250% 0;
+    }
+  }
+}
+
+body {
+  color: #f3f3f3;
+}

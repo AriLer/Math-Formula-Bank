@@ -1,0 +1,11 @@
+services:
+  math:
+    container_name: math
+    restart: unless-stopped
+    image: math
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+      - '8080:8080'
