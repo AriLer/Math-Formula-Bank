@@ -37,7 +37,7 @@
   --color-input: #9c9c9c40;
   --color-ring: #5ba4c2;
 
-  --color-card: #1e2939;
+  --color-card: #1b2636;
   --color-card-foreground: #000000;
   --breakpoint-l: 70rem;
 
@@ -45,7 +45,7 @@
 }
 
 * {
-  /* color: #9c9c9c97; */
+  /* color: #1b2636; */
 }
 
 @layer base {

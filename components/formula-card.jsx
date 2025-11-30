@@ -29,7 +29,7 @@ export function FormulaCard({
     <Card className="hover:shadow-lg transition-shadow h-full">
       <CardHeader>
         <div className="flex justify-between items-start gap-2">
-          <CardTitle className="text-lg text-primary">{formula.name}</CardTitle>
+          <CardTitle className="text-lg text-primary text-[#8EC5FF]">{formula.name}</CardTitle>
           <Button
             variant="ghost"
             size="icon"
