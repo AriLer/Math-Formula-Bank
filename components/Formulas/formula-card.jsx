@@ -25,6 +25,12 @@ export function FormulaCard({
   onDelete,
   isDevMode,
 }) {
+  const handleSave = (e, id) => {
+    e.stopPropagation()
+    e.preventDefault()
+    onToggleSave(id)
+  }
+
   const cardContent = (
     <Link prefetch={false} href={`/formulas/${formula.id}`}>
       <Card className="hover:shadow-lg transition-shadow h-full">
@@ -36,7 +42,7 @@ export function FormulaCard({
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => onToggleSave(formula.id)}
+              onClick={(e) => handleSave(e, formula.id)}
               className={
                 isSaved
                   ? 'text-red-500 hover:text-red-600'
@@ -51,7 +57,7 @@ export function FormulaCard({
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Thumbnail latex={formula.latex} />
+          <Thumbnail latex={formula.latex} className="min-h-16" />
           <CardDescription className="text-foreground">
             {formula.description}
           </CardDescription>

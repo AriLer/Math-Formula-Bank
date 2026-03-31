@@ -5,7 +5,7 @@ export const formulas = [
     latex:
       '\\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N} : n > N \\Rightarrow |a_n - L| < \\varepsilon',
     description: 'במשולש ישר זווית, סכום ריבועי הניצבים שווה לריבוע היתר',
-    tags: ['גאומטריה', 'משולשים', 'קלאסי'],
+    tags: ['גאומטריה', 'משולשים', 'קלאסי', 'גבול', 'סדרות'],
     proof: [
       {
         type: 'paragraph',
