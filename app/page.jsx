@@ -1,25 +1,15 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
-import {
-  Search,
-  X,
-  Plus,
-  Moon,
-  Sun,
-  BookMarked,
-  Library,
-  Code,
-} from 'lucide-react'
-import { FormulaCard } from '@/components/formula-card'
-import { AddFormulaDialog } from '@/components/add-formula-dialog'
-import { EditFormulaDialog } from '@/components/edit-formula-dialog'
+import { Search, X, Moon, Sun, BookMarked, Library, Code } from 'lucide-react'
+import { FormulaCard } from '@/components/Formulas/formula-card'
+import { AddFormulaDialog } from '@/components/Formulas/add-formula-dialog'
+import { EditFormulaDialog } from '@/components/Formulas/edit-formula-dialog'
 import { formulas as defaultFormulas } from '@/data/formulas'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card } from '@/components/ui/card'
 import './globals.css'
-import 'katex/dist/katex.min.css'
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -46,26 +36,6 @@ export default function App() {
     if (savedDevMode) {
       setDevMode(JSON.parse(savedDevMode))
     }
-
-    const savedCustomFormulas = localStorage.getItem('customFormulas')
-    if (savedCustomFormulas) {
-      setCustomFormulas(JSON.parse(savedCustomFormulas))
-    }
-
-    const savedEditedFormulas = localStorage.getItem('editedDefaultFormulas')
-    if (savedEditedFormulas) {
-      setEditedDefaultFormulas(JSON.parse(savedEditedFormulas))
-    }
-
-    const savedIds = localStorage.getItem('savedFormulaIds')
-    if (savedIds) {
-      setSavedFormulaIds(JSON.parse(savedIds))
-    }
-
-    const savedNextId = localStorage.getItem('nextFormulaId')
-    if (savedNextId) {
-      setNextId(JSON.parse(savedNextId))
-    }
   }, [])
 
   // Save to localStorage when state changes
@@ -91,7 +61,7 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem(
       'editedDefaultFormulas',
-      JSON.stringify(editedDefaultFormulas)
+      JSON.stringify(editedDefaultFormulas),
     )
   }, [editedDefaultFormulas])
 
@@ -125,7 +95,7 @@ export default function App() {
 
     if (viewMode === 'saved') {
       formulasToFilter = allFormulas.filter((f) =>
-        savedFormulaIds.includes(f.id)
+        savedFormulaIds.includes(f.id),
       )
     }
 
@@ -146,7 +116,7 @@ export default function App() {
 
   const toggleTag = (tag) => {
     setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
     )
   }
 
@@ -167,17 +137,17 @@ export default function App() {
   const handleEditFormula = (formula) => {
     const isCustom = customFormulas.some((f) => f.id === formula.id)
     const isEditedDefault = editedDefaultFormulas.some(
-      (f) => f.id === formula.id
+      (f) => f.id === formula.id,
     )
     const isOriginalDefault = defaultFormulas.some((f) => f.id === formula.id)
 
     if (isCustom) {
       setCustomFormulas(
-        customFormulas.map((f) => (f.id === formula.id ? formula : f))
+        customFormulas.map((f) => (f.id === formula.id ? formula : f)),
       )
     } else if (isEditedDefault) {
       setEditedDefaultFormulas(
-        editedDefaultFormulas.map((f) => (f.id === formula.id ? formula : f))
+        editedDefaultFormulas.map((f) => (f.id === formula.id ? formula : f)),
       )
     } else if (isOriginalDefault) {
       setEditedDefaultFormulas([...editedDefaultFormulas, formula])
@@ -195,7 +165,7 @@ export default function App() {
     if (window.confirm('האם אתה בטוח שברצונך למחוק נוסחה זו?')) {
       setCustomFormulas(customFormulas.filter((f) => f.id !== formulaId))
       setEditedDefaultFormulas(
-        editedDefaultFormulas.filter((f) => f.id !== formulaId)
+        editedDefaultFormulas.filter((f) => f.id !== formulaId),
       )
       setSavedFormulaIds(savedFormulaIds.filter((id) => id !== formulaId))
     }
@@ -203,7 +173,7 @@ export default function App() {
 
   const toggleSaveFormula = (id) => {
     setSavedFormulaIds((prev) =>
-      prev.includes(id) ? prev.filter((fId) => fId !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((fId) => fId !== id) : [...prev, id],
     )
   }
 
@@ -213,7 +183,7 @@ export default function App() {
   }
 
   return (
-    <div className="page-gradient min-h-screen flex flex-col" dir="rtl">
+    <div className="flex flex-col">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-8">
@@ -241,7 +211,7 @@ export default function App() {
               <Code className="h-5 w-5" />
             </Button>
           </div>
-          <h1 className="font-bold text-[#8EC5FF] text-3xl mb-2">
+          <h1 className="font-bold text-accent text-3xl mb-2">
             מאגר נוסחאות מתמטיות
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -275,15 +245,15 @@ export default function App() {
         </div>
 
         {/* Add Formula Button */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <Button
             onClick={() => setIsAddDialogOpen(true)}
-            className="gap-2 bg-green-600 hover:bg-green-700"
+            className="gap-2 bg-success hover:bg-green-700"
           >
-            <Plus className="h-5 w-5" />
             הוסף נוסחה חדשה
+            <Plus className="h-5 w-5" />
           </Button>
-        </div>
+        </div> */}
 
         {/* Search Bar */}
         <Card className="p-6 mb-6">

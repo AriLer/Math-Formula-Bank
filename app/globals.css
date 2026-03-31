@@ -15,7 +15,7 @@
   --color-secondary: #364153;
   --color-secondary-foreground: #ffffff;
 
-  --color-accent: #364153;
+  --color-accent: #8ec5ff;
   --color-accent-foreground: #ffffff;
 
   --color-destructive: #e7000b;
@@ -58,6 +58,20 @@
   img,
   .lucide {
     @apply shrink-0;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    background-color: #151e2e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #7e7f8c;
+    border-radius: 1rem;
   }
 
   .scroll-none::-webkit-scrollbar {
@@ -112,16 +126,12 @@
     background: linear-gradient(180deg, #3c738a 22%, #0c5a7b 100%);
   }
 
-  .page-gradient {
-    background: linear-gradient(to right bottom, #111b2e 0%, #232f42 100%);
-    background-repeat: no-repeat;
-  }
-
   .loader {
     height: 4px;
     width: 130px;
     --c: no-repeat linear-gradient(#3c738a 0 0);
-    background: var(--c), var(--c), #e6f0fa; /* #e6f0fa is your accent background */
+    background:
+      var(--c), var(--c), #e6f0fa; /* #e6f0fa is your accent background */
     background-size: 60% 100%;
     animation: progress 4s infinite;
     position: relative;
@@ -129,17 +139,25 @@
   }
   @keyframes progress {
     0% {
-      background-position: -150% 0, -150% 0;
+      background-position:
+        -150% 0,
+        -150% 0;
     }
     66% {
-      background-position: 250% 0, -150% 0;
+      background-position:
+        250% 0,
+        -150% 0;
     }
     100% {
-      background-position: 250% 0, 250% 0;
+      background-position:
+        250% 0,
+        250% 0;
     }
   }
 }
 
-body {
+html {
+  min-height: 100vh;
+  background: linear-gradient(to right bottom, #111b2e 0%, #232f42 100%);
   color: #f3f3f3;
 }

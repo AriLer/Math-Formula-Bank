@@ -6,11 +6,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from './ui/dialog'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Textarea } from './ui/textarea'
-import { Badge } from './ui/badge'
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Badge } from '@/components/ui/badge'
 import TeX from '@matejmazur/react-katex'
 
 export function AddFormulaDialog({ open, onOpenChange, onAdd }) {

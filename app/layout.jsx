@@ -1,5 +1,7 @@
 import React from 'react'
 import './globals.css'
+import Footer from '@/components/ui/Footer'
+import 'katex/dist/katex.min.css'
 
 export const metadata = {
   title: 'מאגר הנוסחאות המתמטיות',
@@ -9,7 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
-      <body>{children}</body>
+      <body className="h-full min-h-screen flex flex-col" dir="rtl">
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }

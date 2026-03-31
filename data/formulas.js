@@ -1,16 +1,67 @@
 export const formulas = [
   {
     id: 1,
-    name: 'משפט פיתגורס',
-    latex: 'a^2 + b^2 = c^2',
+    name: 'הגדרת גבול של סדרה',
+    latex:
+      '\\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N} : n > N \\Rightarrow |a_n - L| < \\varepsilon',
     description: 'במשולש ישר זווית, סכום ריבועי הניצבים שווה לריבוע היתר',
     tags: ['גאומטריה', 'משולשים', 'קלאסי'],
+    proof: [
+      {
+        type: 'paragraph',
+        content:
+          'תהי סדרה $(a_n)$ ותהי $L \\in \\mathbb{R}$. נניח כי לכל $\\varepsilon > 0$ קיים $N \\in \\mathbb{N}$ כך שלכל $n > N$ מתקיים $|a_n - L| < \\varepsilon$.',
+      },
+      {
+        type: 'equation',
+        latex: '|a_n - L| < \\varepsilon',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'לפי הגדרת הגבול של סדרה, תנאי זה מבטיח שהאיברים של הסדרה מתקרבים כרצוננו אל $L$ החל ממקום מסוים ואילך.',
+      },
+      {
+        type: 'step',
+        title: 'בחירת אינדקס מתאים',
+        content:
+          'בהינתן $\\varepsilon > 0$, בוחרים $N$ כך שלכל $n > N$ מתקיים $|a_n - L| < \\varepsilon$.',
+      },
+      {
+        type: 'step',
+        title: 'הסקת ההתכנסות',
+        content:
+          'מכיוון שהתנאי מתקיים לכל $\\varepsilon > 0$, נובע כי $\\lim_{n \\to \\infty} a_n = L$.',
+      },
+    ],
+    dependencies: [3, 6, 4, 8],
   },
   {
     id: 2,
     name: 'נוסחת הפתרון למשוואה ריבועית',
     latex: 'x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}',
     description: 'פתרון למשוואה ריבועית מהצורה ax² + bx + c = 0',
+    proof: [
+      {
+        type: 'paragraph',
+        content: 'יהי $f(x)$ פונקציה רציפה על $[a,b]$',
+      },
+      {
+        type: 'equation',
+        latex: "F'(x) = f(x)",
+      },
+      {
+        type: 'paragraph',
+        content: 'לפי הגדרת הנגזרת...',
+      },
+      {
+        type: 'step',
+        title: 'נשתמש במשפט ממוצע הדברים',
+        content: 'קיים c כך שמתקיים...',
+      },
+    ],
+    created_at: '2026-03-30',
+    dependencies: [1, 3, 4, 5, 8],
     tags: ['אלגברה', 'משוואות', 'פולינומים'],
   },
   {
