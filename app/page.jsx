@@ -5,11 +5,12 @@ import { Search, X, Moon, Sun, BookMarked, Library, Code } from 'lucide-react'
 import { FormulaCard } from '@/components/Formulas/formula-card'
 import { AddFormulaDialog } from '@/components/Formulas/add-formula-dialog'
 import { EditFormulaDialog } from '@/components/Formulas/edit-formula-dialog'
-import { formulas as defaultFormulas } from '@/data/formulas'
+// import { formulas as defaultFormulas } from '@/data/formulas'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card } from '@/components/ui/card'
 import './globals.css'
+import axios from 'axios'
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -24,7 +25,8 @@ export default function App() {
   const [savedFormulaIds, setSavedFormulaIds] = useState([])
   const [nextId, setNextId] = useState(16)
   const [formulaToEdit, setFormulaToEdit] = useState(null)
-
+  const [allFormulas, setAllFormulas] = useState([])
+  
   // Load from localStorage on mount
   useEffect(() => {
     const savedDarkMode = localStorage.getItem('darkMode')
@@ -54,6 +56,18 @@ export default function App() {
     localStorage.setItem('devMode', JSON.stringify(devMode))
   }, [devMode])
 
+
+  useEffect(() => {
+    const fetchFormulas = async () => {
+      const res = await axios.get('/api/formulas')
+      console.log("hihihihihih", res)
+      if (res.data) {
+        setDefaultFormulas(res.data)
+      } 
+    }
+    fetchFormulas()
+  },[])
+
   useEffect(() => {
     localStorage.setItem('customFormulas', JSON.stringify(customFormulas))
   }, [customFormulas])
@@ -74,11 +88,11 @@ export default function App() {
   }, [nextId])
 
   // Combine default and custom formulas
-  const allFormulas = useMemo(() => {
-    const editedIds = new Set(editedDefaultFormulas.map((f) => f.id))
-    const uneditedDefaults = defaultFormulas.filter((f) => !editedIds.has(f.id))
-    return [...uneditedDefaults, ...editedDefaultFormulas, ...customFormulas]
-  }, [customFormulas, editedDefaultFormulas])
+  // const allFormulas = useMemo(() => {
+  //   const editedIds = new Set(editedDefaultFormulas.map((f) => f.id))
+  //   const uneditedDefaults = defaultFormulas.filter((f) => !editedIds.has(f.id))
+  //   return [...uneditedDefaults, ...editedDefaultFormulas, ...customFormulas]
+  // }, [customFormulas, editedDefaultFormulas])
 
   // Get all unique tags
   const allTags = useMemo(() => {
